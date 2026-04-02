@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a0a00;
+    min-height: 100vh;
+    font-family: 'Tiro Devanagari Hindi', serif;
+    overflow-x: hidden;
+  }
+  .stars { position: fixed; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:0; }
+  .star { position:absolute; background:#fff9e6; border-radius:50%; animation: twinkle 3s infinite alternate; }
+  @keyframes twinkle {
+    from { opacity:0.2; transform:scale(1); }
+    to { opacity:1; transform:scale(1.4); }
+  }
+  .container {
+    position:relative; z-index:1;
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding: 1.5rem 0.8rem;
+  }
+  .diya-row { display:flex; gap:1rem; margin-bottom:1.2rem; animation: fadeDown 1s ease both; }
+  @keyframes fadeDown {
+    from { opacity:0; transform:translateY(-20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .diya { font-size:1.8rem; animation:flicker 1.5s infinite alternate; filter:drop-shadow(0 0 10px #ff9900); }
+  @keyframes flicker {
+    0% { transform:scale(1) rotate(-2deg); }
+    50% { transform:scale(1.05) rotate(1deg); }
+    100% { transform:scale(0.97) rotate(-1deg); }
+  }
+  .card {
+    background: linear-gradient(160deg, #3d1200 0%, #1a0500 60%, #2a0e00 100%);
+    border: 2px solid #ff8800;
+    border-radius: 18px;
+    padding: 2rem 1.4rem;
+    max-width: 420px;
+    width: 100%;
+    text-align:center;
+    box-shadow: 0 0 30px rgba(255,120,0,0.25);
+    animation: fadeUp 1.2s ease 0.3s both;
+    position:relative; overflow:hidden;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .card::before {
+    content:''; position:absolute; top:-2px; left:10%; right:10%; height:3px;
+    background: linear-gradient(90deg, transparent, #ffcc00, #ff8800, #ffcc00, transparent);
+  }
+  .card::after {
+    content:''; position:absolute; bottom:-2px; left:10%; right:10%; height:3px;
+    background: linear-gradient(90deg, transparent, #ffcc00, #ff8800, #ffcc00, transparent);
+  }
+  .om { font-size:2.5rem; color:#ffcc00; text-shadow:0 0 20px #ff8800; animation:pulse 2s infinite; line-height:1; margin-bottom:0.4rem; }
+  @keyframes pulse {
+    0%,100% { text-shadow:0 0 20px #ff8800, 0 0 40px #ff6600; }
+    50% { text-shadow:0 0 30px #ffcc00, 0 0 60px #ff9900; }
+  }
+  .subtitle-top { color:#ffaa44; font-family:'Cinzel Decorative',serif; font-size:0.7rem; letter-spacing:2px; margin-bottom:1rem; }
+  .hindi-title { font-size:1.7rem; color:#ff9922; margin-bottom:1.2rem; text-shadow:0 0 10px rgba(255,120,0,0.5); line-height:1.5; }
+  .divider { width:80%; margin:0 auto 1.2rem; height:1px; background:linear-gradient(90deg, transparent, #ff8800, transparent); }
+  .to-text { color:#ffaa44; font-size:0.8rem; letter-spacing:1px; margin-bottom:0.3rem; opacity:0.8; }
+  .sister-name { font-family:'Cinzel Decorative',serif; font-size:1.4rem; color:#ffdd88; text-shadow:0 0 20px #ff9900; margin-bottom:1.2rem; animation:glow 2.5s infinite alternate; }
+  @keyframes glow {
+    from { text-shadow:0 0 15px #ff8800; }
+    to { text-shadow:0 0 30px #ffcc00, 0 0 50px #ff9900; }
+  }
+  .message { color:#ffd9a0; font-size:1rem; line-height:1.85; margin-bottom:1.2rem; font-style:italic; }
+  .blessing { background:rgba(255,136,0,0.08); border:1px solid rgba(255,136,0,0.3); border-radius:10px; padding:0.9rem 1rem; margin-bottom:1.2rem; color:#ffbb55; font-size:0.92rem; line-height:1.8; }
+  .from-text { color:#ff8844; font-size:0.85rem; opacity:0.85; }
+  .sender { color:#ffcc55; font-size:1rem; font-weight:bold; margin-top:0.3rem; }
+  .flowers { font-size:1.4rem; margin:0.8rem 0; animation:bounce 2s ease-in-out infinite; }
+  @keyframes bounce {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-5px); }
+  }
+  .rangoli { font-size:1.1rem; opacity:0.5; animation:spin 20s linear infinite; display:inline-block; margin:0 0.4rem; }
+  @keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="container">
+  <div class="diya-row">
+    <span class="diya">🪔</span>
+    <span class="diya" style="animation-delay:0.3s">🌸</span>
+    <span class="diya" style="animation-delay:0.6s">🪔</span>
+    <span class="diya" style="animation-delay:0.9s">🌸</span>
+    <span class="diya" style="animation-delay:1.2s">🪔</span>
+  </div>
+  <div class="card">
+    <div class="om">ॐ</div>
+    <div class="subtitle-top">✦ Hanuman Jayanti 2025 ✦</div>
+    <div class="hindi-title">जय श्री राम 🚩<br>जय बजरंग बली</div>
+    <div class="divider"></div>
+    <div class="to-text">ANKKU DII</div>
+    <div class="sister-name">ANKKU DII</div>
+    <div class="flowers">🌺 🌼 🌺</div>
+    <div class="message">
+      Aaj Hanuman Jayanti ke is pavitra din par,<br>
+      Bajrang Bali tumhare jeevan mein<br>
+      sukh, shakti aur saubhagya lekar aayen. 🙏
+    </div>
+    <div class="blessing">
+      हनुमान जी की कृपा से तुम्हारा हर सपना पूरा हो,<br>
+      हर कदम पर उनका आशीर्वाद बना रहे।<br>
+      तुम्हें हनुमान जयंती की हार्दिक बधाई! 🚩
+    </div>
+    <div class="from-text">💛 Bahut Saara Pyaar —</div>
+    <div class="sender">TUGGU</div>
+  </div>
+  <div style="margin-top:1.2rem; color:rgba(255,136,0,0.4); font-size:0.75rem; text-align:center;">
+    <span class="rangoli">✿</span> Jai Hanuman <span class="rangoli">✿</span>
+  </div>
+</div>
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+    starsEl.appendChild(s);
+  }
+</script>
+</body>
+</html>
